@@ -12,46 +12,23 @@ import { InvestmentResultsComponent } from "./investment-results/investment-resu
 })
 
 export class AppComponent {
-  resultsData = signal<{
-    year: number,
-    interest: number,
-    valueEndOfYear: number,
-    annualInvestment: number,
-    totalInterest: number,
-    totalAmountInvested: number,
-  }[] | undefined>(undefined);
+  // resultsData = signal<{
+  //   year: number,
+  //   interest: number,
+  //   valueEndOfYear: number,
+  //   annualInvestment: number,
+  //   totalInterest: number,
+  //   totalAmountInvested: number,
+  // }[] | undefined>(undefined);
 
-  // resultsData?: {
-  //   year: number;
-  //   interest: number;
-  //   valueEndOfYear: number;
-  //   annualInvestment: number;
-  //   totalInterest: number;
-  //   totalAmountInvested: number;
-  // }[];
+  // // resultsData?: {
+  // //   year: number;
+  // //   interest: number;
+  // //   valueEndOfYear: number;
+  // //   annualInvestment: number;
+  // //   totalInterest: number;
+  // //   totalAmountInvested: number;
+  // // }[];
 
-  onCalculateInvestmentResults( data: InvestmentInput) {
-    //destructor
-    const {initialInvestment, annualInvestment, duration, expectedReturn} = data;
-    const annualData = [];
-    let investmentValue = initialInvestment;
-
-    for (let i = 0; i < duration; i++) {
-      const year = i + 1;
-      const interestEarnedInYear = investmentValue * (expectedReturn / 100);
-      investmentValue += interestEarnedInYear + annualInvestment;
-      const totalInterest =
-        investmentValue - annualInvestment * year - initialInvestment;
-      annualData.push({
-        year: year,
-        interest: interestEarnedInYear,
-        valueEndOfYear: investmentValue,
-        annualInvestment: annualInvestment,
-        totalInterest: totalInterest,
-        totalAmountInvested: initialInvestment + annualInvestment * year,
-      });
-    }
-    this.resultsData.set(annualData);
-    // this.resultsData = annualData;
-  }
+  
 }
